@@ -1,5 +1,6 @@
 package com.cj.project.controller;
 
+import com.cj.project.common.response.BaseResponse;
 import com.cj.project.mapper.UserMapper;
 import com.cj.project.model.dto.UserDTO;
 import com.cj.project.model.entity.User;
@@ -20,8 +21,8 @@ public class indexController {
     private UserMapper userMapper;
 
     @GetMapping("/{name}")
-    public String index(@PathVariable("name") String name) {
-        return "hello => " + name;
+    public BaseResponse<String> index(@PathVariable("name") String name) {
+        return BaseResponse.success("hello =>" + name);
     }
 
     @PostMapping("/testPost")
