@@ -22,4 +22,7 @@ public interface UserMapper {
 
     // 修改用户
     Integer updateUser(User user);
+
+    // 删除用户
+    Integer deleteUser(@Param("id") Long id);
 }

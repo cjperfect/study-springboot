@@ -69,4 +69,11 @@ public class indexController {
         return userMapper.updateUser(user);
     }
 
+
+    @DeleteMapping("/deleteUser/{id}")
+    public Integer deleteUser(@PathVariable("id") Long id) {
+        return userMapper.deleteUser(id);
+    }
+
+
 }

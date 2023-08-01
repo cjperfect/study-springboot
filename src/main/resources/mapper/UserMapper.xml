@@ -16,6 +16,12 @@
         where id=#{id}
     </update>
 
+    <delete id="deleteUser">
+        delete
+        from users
+        where id = #{id}
+    </delete>
+
     <select id="getAllUser" resultType="com.cj.project.model.entity.User">
         select *
         from users
