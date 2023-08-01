@@ -14,6 +14,11 @@
         <spring-boot.version>2.6.13</spring-boot.version>
     </properties>
     <dependencies>
+        <!--使用lombok省略set get方法-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!--添加spring-boot-devtools模块, 来支持springboot应用支持热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
