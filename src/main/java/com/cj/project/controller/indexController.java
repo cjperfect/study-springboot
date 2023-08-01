@@ -3,6 +3,7 @@ package com.cj.project.controller;
 import com.cj.project.mapper.UserMapper;
 import com.cj.project.model.dto.UserDTO;
 import com.cj.project.model.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +38,11 @@ public class indexController {
     @ResponseBody
     public List<User> testMybatis() {
         return userMapper.getAllUser();
+    }
+
+    @GetMapping("/getUserById")
+    @ResponseBody
+    public User getUserById(@RequestParam("id") Long id) {
+        return userMapper.getUserById(id);
     }
 }
