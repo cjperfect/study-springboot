@@ -6,6 +6,9 @@ import com.cj.project.model.dto.UserDTO;
 import com.cj.project.model.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -51,7 +54,11 @@ public class indexController {
 
     @PostMapping("/addUser")
     @ResponseBody
-    public Integer addUser(@RequestBody UserDTO userDTO) {
+    public Integer addUser(@RequestBody @Validated UserDTO userDTO, BindingResult bindingResult) {
+        List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+        if (!fieldErrors.isEmpty()) {
+            throw new RuntimeException(fieldErrors.get(0).getDefaultMessage());
+        }
 
         User user = new User();
         user.setName(userDTO.getName());
