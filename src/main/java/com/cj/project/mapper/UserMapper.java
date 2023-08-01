@@ -10,6 +10,6 @@ import java.util.List;
 @Component
 public interface UserMapper {
 
-    @Select("select * from users")
+//    @Select("select * from users")
     List<User> getAllUser();
 }
