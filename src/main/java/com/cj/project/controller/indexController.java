@@ -22,7 +22,9 @@ public class indexController {
 
     @GetMapping("/{name}")
     public BaseResponse<String> index(@PathVariable("name") String name) {
-        return BaseResponse.success("hello =>" + name);
+//        return BaseResponse.success("hello =>" + name);
+
+        throw new RuntimeException("运行时自定义异常");
     }
 
     @PostMapping("/testPost")
