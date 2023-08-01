@@ -3,8 +3,24 @@
 
 <mapper namespace="com.cj.project.mapper.UserMapper">
     <insert id="addUser">
-        insert into users (`name`, `age`)
-        values (#{name}, #{age})
+        insert into users
+        <trim prefix=" (" suffix=") " suffixOverrides=",">
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="age != null and age != ''">
+                `age`
+            </if>
+        </trim>
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test='name != null and name != ""'>
+                #{name},
+            </if>
+            <if test="age != null and age != ''">
+                #{age},
+            </if>
+        </trim>
     </insert>
 
     <update id="updateUser">
