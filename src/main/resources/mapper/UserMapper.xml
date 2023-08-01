@@ -7,6 +7,15 @@
         values (#{name}, #{age})
     </insert>
 
+    <update id="updateUser">
+        update users
+        <set>
+            <if test="name != null and name != ''">name=#{name},</if>
+            <if test="age != null and age != ''">age=#{age}</if>
+        </set>
+        where id=#{id}
+    </update>
+
     <select id="getAllUser" resultType="com.cj.project.model.entity.User">
         select *
         from users

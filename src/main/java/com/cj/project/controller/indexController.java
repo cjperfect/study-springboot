@@ -57,4 +57,16 @@ public class indexController {
         return userMapper.addUser(user);
     }
 
+    @PostMapping("/updateUser")
+    @ResponseBody
+    public Integer updateUser(@RequestBody UserDTO userDTO) {
+
+        User user = new User();
+        user.setId(userDTO.getId());
+        user.setName(userDTO.getName());
+        user.setAge(userDTO.getAge());
+
+        return userMapper.updateUser(user);
+    }
+
 }

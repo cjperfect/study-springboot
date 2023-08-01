@@ -19,4 +19,7 @@ public interface UserMapper {
 
     // 新增一条用户
     Integer addUser(User user);
+
+    // 修改用户
+    Integer updateUser(User user);
 }
