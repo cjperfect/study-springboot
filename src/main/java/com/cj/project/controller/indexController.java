@@ -54,11 +54,7 @@ public class indexController {
 
     @PostMapping("/addUser")
     @ResponseBody
-    public Integer addUser(@RequestBody @Validated UserDTO userDTO, BindingResult bindingResult) {
-        List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-        if (!fieldErrors.isEmpty()) {
-            throw new RuntimeException(fieldErrors.get(0).getDefaultMessage());
-        }
+    public Integer addUser(@RequestBody @Validated UserDTO userDTO) {
 
         User user = new User();
         user.setName(userDTO.getName());
