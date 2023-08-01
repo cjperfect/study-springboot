@@ -16,4 +16,7 @@ public interface UserMapper {
 
     // 根据id获取指定用户
     User getUserById(@Param("id") Long id);
+
+    // 新增一条用户
+    Integer addUser(User user);
 }

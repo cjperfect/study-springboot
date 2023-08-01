@@ -45,4 +45,16 @@ public class indexController {
     public User getUserById(@RequestParam("id") Long id) {
         return userMapper.getUserById(id);
     }
+
+    @PostMapping("/addUser")
+    @ResponseBody
+    public Integer addUser(@RequestBody UserDTO userDTO) {
+
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setAge(userDTO.getAge());
+
+        return userMapper.addUser(user);
+    }
+
 }
