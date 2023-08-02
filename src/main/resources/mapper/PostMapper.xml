@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cj.project.mapper.PostMapper">
+
+    <resultMap id="post" type="com.cj.project.model.vo.Post">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="userId" column="user_id"/>
+        <association property="user" javaType="com.cj.project.model.entity.User">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="age" column="age"/>
+        </association>
+    </resultMap>
+
+
+    <select id="getAllPost" resultMap="post">
+        select *
+        from posts
+                 left join users
+                           on posts.user_id = users.id
+    </select>
+
+</mapper>

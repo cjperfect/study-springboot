@@ -1,9 +1,11 @@
 package com.cj.project.controller;
 
 import com.cj.project.common.response.BaseResponse;
+import com.cj.project.mapper.PostMapper;
 import com.cj.project.mapper.UserMapper;
 import com.cj.project.model.dto.UserDTO;
 import com.cj.project.model.entity.User;
+import com.cj.project.model.vo.Post;
 import com.cj.project.util.CopyUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,15 @@ public class indexController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private PostMapper postMapper;
+
+    @GetMapping("/getAllPost")
+    public BaseResponse<List<Post>> getAllPost() {
+        List<Post> postList = postMapper.getAllPost();
+        return BaseResponse.success(postList);
+    }
 
     // 根据name进行模糊查询
     @GetMapping("")
