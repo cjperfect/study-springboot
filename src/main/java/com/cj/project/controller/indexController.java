@@ -24,6 +24,14 @@ public class indexController {
     @Autowired
     private UserMapper userMapper;
 
+    // 根据name进行模糊查询
+    @GetMapping("")
+    public BaseResponse<List<User>> queryByKey(@RequestParam("name") String name) {
+        System.out.println(name);
+        List<User> userList = userMapper.queryByKey(name);
+        return BaseResponse.success(userList);
+    }
+
     @GetMapping("/{name}")
     public BaseResponse<String> index(@PathVariable("name") String name) {
 //        return BaseResponse.success("hello =>" + name);

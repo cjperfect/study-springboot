@@ -49,5 +49,10 @@
         where id = #{id}
     </select>
 
+    <select id="queryByKey" resultType="com.cj.project.model.entity.User">
+        <bind name="pattern" value="'%' + name + '%'"/>
+        select * from users where `name` like #{pattern}
+    </select>
+
 
 </mapper>

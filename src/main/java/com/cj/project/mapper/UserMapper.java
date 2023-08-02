@@ -25,4 +25,6 @@ public interface UserMapper {
 
     // 删除用户
     Integer deleteUser(@Param("id") Long id);
+
+    List<User> queryByKey(@Param("name") String name);
 }
