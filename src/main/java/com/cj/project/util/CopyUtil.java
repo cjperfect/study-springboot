@@ -1,0 +1,43 @@
+package com.cj.project.util;
+
+import com.cj.project.common.response.ResponseCode;
+import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CopyUtil {
+
+
+    /* 单个类拷贝 */
+    public static <T> T copy(Object source, Class<T> clazz) {
+        if (source == null) {
+            return null;
+        }
+
+        T obj = null;
+
+        try {
+            obj = clazz.newInstance(); // 传过来类的实例
+        } catch (Exception e) {
+            throw new RuntimeException(ResponseCode.RC500.getMsg());
+        }
+
+        return obj;
+    }
+
+    /* 多个类拷贝 */
+
+    public static <T> List<T> copyList(List source, Class<T> clazz) {
+
+        List<T> resultList = new ArrayList<>();
+
+        if (!CollectionUtils.isEmpty(source)) {
+            for (Object obj : source) {
+                resultList.add(copy(obj, clazz));
+            }
+        }
+
+        return resultList;
+    }
+}

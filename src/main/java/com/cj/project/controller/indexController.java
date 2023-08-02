@@ -4,6 +4,7 @@ import com.cj.project.common.response.BaseResponse;
 import com.cj.project.mapper.UserMapper;
 import com.cj.project.model.dto.UserDTO;
 import com.cj.project.model.entity.User;
+import com.cj.project.util.CopyUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -37,8 +38,8 @@ public class indexController {
         map.put("name", userDTO.getName());
         map.put("age", userDTO.getAge());
         return map;
-    }
 
+    }
 
     @GetMapping("/testMybatis")
     @ResponseBody
@@ -67,10 +68,12 @@ public class indexController {
     @ResponseBody
     public Integer updateUser(@RequestBody UserDTO userDTO) {
 
-        User user = new User();
-        user.setId(userDTO.getId());
-        user.setName(userDTO.getName());
-        user.setAge(userDTO.getAge());
+//        User user = new User();
+//        user.setId(userDTO.getId());
+//        user.setName(userDTO.getName());
+//        user.setAge(userDTO.getAge());
+
+        User user = CopyUtil.copy(userDTO, User.class);
 
         return userMapper.updateUser(user);
     }

@@ -27,7 +27,7 @@ public class RestExceptionHandler {
     public BaseResponse<String> paramsException(MethodArgumentNotValidException e) {
         BindingResult bindingResult = e.getBindingResult();
 
-        List<String> errorList = new ArrayList<>(); // 存放所有校验不同的参数
+        List<String> errorList = new ArrayList<>(); // 存放所有校验不通过的参数
 
         if (bindingResult.hasErrors()) {
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
