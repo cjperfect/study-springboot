@@ -43,7 +43,16 @@
         from users
     </select>
 
-    <select id="getUserById" resultType="com.cj.project.model.entity.User">
+    <resultMap id="user" type="com.cj.project.model.vo.UserVO">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+
+        <collection property="posts" javaType="ArrayList"
+                    select="com.cj.project.mapper.PostMapper.getPostsByUserId" column="id"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="user">
         select *
         from users
         where id = #{id}
@@ -53,10 +62,6 @@
         <bind name="pattern" value="'%' + name + '%'"/>
         select * from users where `name` like #{pattern}
     </select>
-
-
-    <!--查询分类-->
-
 
 
 </mapper>

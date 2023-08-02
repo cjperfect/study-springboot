@@ -5,12 +5,10 @@ import com.cj.project.mapper.PostMapper;
 import com.cj.project.mapper.UserMapper;
 import com.cj.project.model.dto.UserDTO;
 import com.cj.project.model.entity.User;
-import com.cj.project.model.vo.Post;
+import com.cj.project.model.vo.PostVO;
+import com.cj.project.model.vo.UserVO;
 import com.cj.project.util.CopyUtil;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +28,8 @@ public class indexController {
     private PostMapper postMapper;
 
     @GetMapping("/getAllPost")
-    public BaseResponse<List<Post>> getAllPost() {
-        List<Post> postList = postMapper.getAllPost();
+    public BaseResponse<List<PostVO>> getAllPost() {
+        List<PostVO> postList = postMapper.getAllPost();
         return BaseResponse.success(postList);
     }
 
@@ -68,7 +66,7 @@ public class indexController {
 
     @GetMapping("/getUserById")
     @ResponseBody
-    public User getUserById(@RequestParam("id") Long id) {
+    public UserVO getUserById(@RequestParam("id") Long id) {
         return userMapper.getUserById(id);
     }
 

@@ -1,6 +1,7 @@
 package com.cj.project.mapper;
 
 import com.cj.project.model.entity.User;
+import com.cj.project.model.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public interface UserMapper {
     List<User> getAllUser();
 
     // 根据id获取指定用户
-    User getUserById(@Param("id") Long id);
+    UserVO getUserById(@Param("id") Long id);
 
     // 新增一条用户
     Integer addUser(User user);
@@ -27,4 +28,5 @@ public interface UserMapper {
     Integer deleteUser(@Param("id") Long id);
 
     List<User> queryByKey(@Param("name") String name);
+
 }

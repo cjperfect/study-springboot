@@ -3,7 +3,7 @@
 
 <mapper namespace="com.cj.project.mapper.PostMapper">
 
-    <resultMap id="post" type="com.cj.project.model.vo.Post">
+    <resultMap id="post" type="com.cj.project.model.vo.PostVO">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="userId" column="user_id"/>
@@ -14,12 +14,18 @@
         </association>
     </resultMap>
 
-
+    <!--每篇文章对应一个作者-->
     <select id="getAllPost" resultMap="post">
         select *
         from posts
                  left join users
                            on posts.user_id = users.id
+    </select>
+
+    <select id="getPostsByUserId" resultType="com.cj.project.model.entity.Post">
+        select *
+        from posts
+        where user_id = #{userId}
     </select>
 
 </mapper>
