@@ -1,6 +1,7 @@
 package com.cj.project.util;
 
 import com.cj.project.common.response.ResponseCode;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class CopyUtil {
         } catch (Exception e) {
             throw new RuntimeException(ResponseCode.RC500.getMsg());
         }
-
+        BeanUtils.copyProperties(source, obj);
         return obj;
     }
 
